@@ -75,4 +75,4 @@ jobs:
         cd build
         git add .
         git commit -m "$(grep -o '@ [0-9a-z].*' README.md | cut -d\  -f2)" ${ref+--amend}
-        git push origin ${{matrix.system}}/${{matrix.channel}}
+        git push origin HEAD:refs/heads/${{matrix.system}}/${{matrix.channel}}
