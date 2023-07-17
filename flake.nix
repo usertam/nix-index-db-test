@@ -20,30 +20,21 @@
         nativeBuildInputs = [
           pkgs.nix-index
           pkgs.cacert
-          passthru.toybox
-          passthru.readme
+          passthru.README
         ];
         dontUnpack = true;
         dontPatch = true;
         dontConfigure = true;
         buildPhase = ''
-          HOME=$TMP nix-index --db $TMP --system ${system} \
+          mkdir -p $out/nix-index-db
+          HOME=$TMP nix-index --db $out/nix-index-db --system ${system} \
             --nixpkgs https://github.com/NixOS/nixpkgs/tarball/${inputs.${channel}.rev}
-          install -Dm444 $TMP/files $out/nix-index-db
         '';
         installPhase = ''
-          install -Dm555 -t $out ${passthru.toybox}/bin/toybox
           install -Dm444 -t $out $src/template/flake.nix $src/template/flake.lock \
-            ${passthru.readme}/README.md
+            ${passthru.README}/README.md
         '';
-        passthru.toybox =
-          if system == system-host then pkgs.pkgsStatic.toybox
-          else pkgs.pkgsCross.${
-            if system == "aarch64-linux" then "aarch64-multiplatform"
-            else if system == "i686-linux" then "gnu32"
-            else system
-          }.pkgsStatic.toybox;
-        passthru.readme = import ./template/README.nix {
+        passthru.README = import ./template/README.nix {
           inherit (pkgs) writeTextDir;
           inherit (inputs.${channel}) rev shortRev lastModifiedDate;
           inherit system channel version;
