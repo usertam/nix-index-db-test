@@ -66,11 +66,6 @@ jobs:
       id: build
       continue-on-error: true
       run: nix build .#${{matrix.system}}.${{matrix.channel}}
-    - name: Make build worktree
-      if: steps.build.outcome == 'success'
-      run: |
-        mkdir -p build
-        git worktree add build/${{matrix.system}}.${{matrix.channel}} HEAD
     - name: Push to ${{matrix.system}}/${{matrix.channel}}
       if: steps.build.outcome == 'success'
       run: |
