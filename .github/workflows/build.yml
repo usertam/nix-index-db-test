@@ -55,6 +55,7 @@ jobs:
         extra_nix_config: |
           sandbox = false
           system-features = recursive-nix
+          experimental-features = nix-command flakes recursive-nix
         github_access_token: ${{secrets.GITHUB_TOKEN}}
     - run: cat /etc/nix/nix.conf
     - name: Set up github-actions identity
