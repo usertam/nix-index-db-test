@@ -74,5 +74,5 @@ jobs:
         cp -a outputs/out/* build
         cd build
         git add .
-        git commit -m "$(nix eval --raw .#default.version)" ${ref+--amend}
-        git push origin build "$(nix eval --raw .#default.version)"
+        git commit -m "$(grep -o '@ [0-9a-z].*' README.md | cut -d\  -f2)" ${ref+--amend}
+        git push origin build ${{matrix.system}}/${{matrix.channel}}
