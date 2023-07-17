@@ -46,6 +46,7 @@ jobs:
     needs: update-deps
     strategy:
       matrix: ${{fromJson(needs.update-deps.outputs.matrix)}}
+      fail-fast: false
     runs-on: ${{matrix.host}}
     steps:
     - uses: actions/checkout@v3
@@ -63,12 +64,15 @@ jobs:
         git config user.name "github-actions"
         git config user.email "github-actions[bot]@users.noreply.github.com"
     - name: Build database
+      continue-on-error: true
       run: nix build .#${{matrix.system}}.${{matrix.channel}}
     - name: Make build worktree
+      if: success()
       run: |
         mkdir -p build
         git worktree add build/${{matrix.system}}.${{matrix.channel}} HEAD
     - name: Push to ${{matrix.system}}/${{matrix.channel}}
+      if: success()
       run: |
         git fetch --depth=1 origin ${{matrix.system}}/${{matrix.channel}}:build && ref=refs/heads/build
         git worktree add build ${ref-$(echo | git commit-tree 4b825dc642cb6eb9a060e54bf8d69288fbee4904)}
