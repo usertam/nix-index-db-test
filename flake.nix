@@ -17,8 +17,8 @@
         version = builtins.substring 2 6 inputs.${channel}.lastModifiedDate
           + "." + inputs.${channel}.shortRev;
         src = self;
-        __noChroot = true;
-        requiredSystemFeatures = [ "recursive-nix" ];
+        # __noChroot = true;
+        # requiredSystemFeatures = [ "recursive-nix" ];
         nativeBuildInputs = [
           pkgs.nix-index
           pkgs.cacert

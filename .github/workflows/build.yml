@@ -65,13 +65,13 @@ jobs:
     - name: Build database
       id: build
       continue-on-error: true
-      run: nix build .#${{matrix.system}}.${{matrix.channel}}
+      run: nix develop .#${{matrix.system}}.${{matrix.channel}} -c sh -c 'eval "$buildPhase" && eval "$installPhase"'
     - name: Push to ${{matrix.system}}/${{matrix.channel}}
       if: steps.build.outcome == 'success'
       run: |
         git fetch --depth=1 origin ${{matrix.system}}/${{matrix.channel}}:build && ref=refs/heads/build
         git worktree add build ${ref-$(echo | git commit-tree 4b825dc642cb6eb9a060e54bf8d69288fbee4904)}
-        cp -a result/* build
+        cp -a outputs/out/* build
         cd build
         git add .
         git commit -m "$(nix eval --raw .#default.version)" ${ref+--amend}
