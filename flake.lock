@@ -2,11 +2,11 @@
   "nodes": {
     "master": {
       "locked": {
-        "lastModified": 1692233914,
-        "narHash": "sha256-YAzWxNA4x3iO30vtn6Sn/k7ZseyYiaLXt8ZjUf79fZ8=",
+        "lastModified": 1692322182,
+        "narHash": "sha256-qpcqSByYVHb2JJaAOEQl3Lo+mVlXd9TEpbr305z0+dY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5c3ec91c22e96f62f00fa27a67189e3bde83d446",
+        "rev": "390bbd670c956533791be1340625008c56658c4d",
         "type": "github"
       },
       "original": {
@@ -50,11 +50,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1692190437,
-        "narHash": "sha256-yJUZzmzSmDYb9ONPnMQDru66RjZgGQZRvj3tQebkexk=",
+        "lastModified": 1692251698,
+        "narHash": "sha256-f6NeF+I+OOycEqFrqgAoxATaeW86q42r0BjwCHcIAvs=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "9b2aa98db6b10503666a50f4eb93b2fc0d57bde5",
+        "rev": "4107024ef4d9f637b568296f40a2ba0f62b13437",
         "type": "github"
       },
       "original": {
