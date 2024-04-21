@@ -53,11 +53,7 @@ jobs:
     - uses: cachix/install-nix-action@v22
       with:
         nix_path: nixpkgs=channel:nixpkgs-unstable
-        extra_nix_config: |
-          sandbox = false
-          system-features = recursive-nix
-          experimental-features = nix-command flakes recursive-nix
-        github_access_token: ${{secrets.GITHUB_TOKEN}}
+        extra_nix_config: experimental-features = nix-command flakes
     - name: Set up github-actions identity
       run: |
         git config user.name "github-actions"
@@ -65,7 +61,9 @@ jobs:
     - name: Build database
       id: build
       continue-on-error: true
-      run: nix develop .#${{matrix.system}}.${{matrix.channel}} -c sh -c 'eval "$buildPhase" && eval "$installPhase"'
+      run: |
+        nix develop .#${{matrix.system}}.${{matrix.channel}} -c \
+          sh -c 'eval "$buildPhase" && eval "$installPhase"'
     - name: Push to ${{matrix.system}}/${{matrix.channel}}
       if: steps.build.outcome == 'success'
       run: |
@@ -74,5 +72,5 @@ jobs:
         cp -a outputs/out/* build
         cd build
         git add .
-        git commit -m "$(grep -o '@ [0-9a-z].*' README.md | cut -d\  -f2)" ${ref---amend}
+        git commit -m "$(grep -o '@ [0-9a-z].*' README.md | cut -d\  -f2)" $([ -z "$ref" ] && echo --amend)
         git push origin HEAD:refs/heads/${{matrix.system}}/${{matrix.channel}}
