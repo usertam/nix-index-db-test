@@ -1,9 +1,7 @@
 {
   outputs = { self }: let
-    system = with builtins; elemAt (match
-      "^.*Platform: `([a-z0-9_-]+)`.*$"
-      (readFile ./README.md)) 0;
+    system = with builtins; head (match "^### (.*)/.*" (readFile ./README.md));
   in {
-    packages.${system}.default = ./.;
+    packages.x86_64-linux.default = self;
   };
 }
