@@ -1,5 +1,5 @@
 # nix-index-db
-### aarch64-linux/master @ 240502.b8e911463ec39614240a5164030090e22a785c02
+### aarch64-linux/master @ 240502.b8e9114
 - Nixpkgs: @[](https://github.com/NixOS/nixpkgs/commit/b8e911463ec39614240a5164030090e22a785c02)
 - Platform: 
 - Date: 
