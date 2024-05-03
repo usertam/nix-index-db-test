@@ -1,5 +1,5 @@
 # nix-index-db
-### x86_64-darwin/master @ 240502.b8e9114
-- Nixpkgs: @[](https://github.com/NixOS/nixpkgs/commit/b8e911463ec39614240a5164030090e22a785c02)
+### x86_64-darwin/master @ 240502.e635774
+- Nixpkgs: @[](https://github.com/NixOS/nixpkgs/commit/e6357746b41cd4cd936e663b043808797f739d21)
 - Platform: 
 - Date: 
