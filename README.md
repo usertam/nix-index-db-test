@@ -1,5 +1,5 @@
 # nix-index-db
-### aarch64-linux/nixpkgs-unstable @ 240508.c4200cb
-- Nixpkgs: @[](https://github.com/NixOS/nixpkgs/commit/c4200cb341ee794775185ecd4105fbbfb5ca73a0)
+### aarch64-linux/nixpkgs-unstable @ 240509.cc6431d
+- Nixpkgs: @[](https://github.com/NixOS/nixpkgs/commit/cc6431d5598071f0021efc6c009c79e5b5fe1617)
 - Platform: 
 - Date: 
