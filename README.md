@@ -1,5 +1,5 @@
 # nix-index-db
-### x86_64-darwin/nixpkgs-unstable @ 240512.3281bec
-- Nixpkgs: @[](https://github.com/NixOS/nixpkgs/commit/3281bec7174f679eabf584591e75979a258d8c40)
+### x86_64-darwin/nixpkgs-unstable @ 240514.abd6d48
+- Nixpkgs: @[](https://github.com/NixOS/nixpkgs/commit/abd6d48f8c77bea7dc51beb2adfa6ed3950d2585)
 - Platform: 
 - Date: 
