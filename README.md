@@ -1,5 +1,5 @@
 # nix-index-db
-### x86_64-linux/master @ 240523.40e1e69
-- Nixpkgs: @[](https://github.com/NixOS/nixpkgs/commit/40e1e69152f8c82da8f5ec578178d6c86d7282b0)
+### x86_64-linux/master @ 240524.bfb7a88
+- Nixpkgs: @[](https://github.com/NixOS/nixpkgs/commit/bfb7a882678e518398ce9a31a881538679f6f092)
 - Platform: 
 - Date: 
