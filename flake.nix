@@ -13,12 +13,10 @@
       forAllSystems (system: forAllChannels (channel: let
         pkgs = inputs.nixpkgs-unstable.legacyPackages.${system-host};
         lock = with builtins; fromJSON (readFile ./flake.lock);
-        date = inputs.${channel}.lastModifiedDate;
-        commit = inputs.${channel}.rev;
-        abbrev = inputs.${channel}.shortRev;
-      in pkgs.stdenv.mkDerivation (finalAttrs: {
+        flake = inputs.${channel};
+      in pkgs.stdenv.mkDerivation (final: {
         pname = "nix-index-db-src-${system}-${channel}";
-        version = builtins.substring 2 6 date + "." + abbrev;
+        version = builtins.substring 2 6 flake.lastModifiedDate + "." + flake.shortRev;
         src = self;
         nativeBuildInputs = [
           pkgs.nix-index
@@ -30,20 +28,16 @@
         buildPhase = ''
           mkdir -p $out/nix-index-db
           HOME=$TMP nix-index --db $out/nix-index-db --system ${system} \
-            --nixpkgs https://github.com/NixOS/nixpkgs/tarball/${commit}
+            --nixpkgs https://github.com/NixOS/nixpkgs/tarball/${flake.rev}
         '';
         installPhase = ''
-          cat <<EOF > $out/flake.nix
+          cat <<'EOF' > $out/flake.nix
           {
-            outputs = { self }: let
-              system = with builtins; head (match "^### (.*)/.*" (readFile ./README.md));
-            in {
-              packages.''${system}.default = self;
-            };
+            outputs.packages.${system}.default = self;
           }
           EOF
 
-          cat <<EOF > $out/flake.lock
+          cat <<'EOF' > $out/flake.lock
           {
             "nodes": {
               "root": {}
@@ -53,12 +47,12 @@
           }
           EOF
 
-          cat <<EOF > $out/README.md
+          cat <<'EOF' > $out/README.md
           # nix-index-db
-          ### ${system}/${channel} @ ${finalAttrs.version}
-          - Nixpkgs: `${channel}`@[`${abbrev}`](https://github.com/NixOS/nixpkgs/commit/${commit})
+          ### ${system}/${channel} @ ${final.version}
+          - Nixpkgs: `${channel}`@[`${flake.shortRev}`](https://github.com/NixOS/nixpkgs/commit/${flake.rev})
           - Platform: `${system}`
-          - Date: `${date}`
+          - Timestamp: `${flake.lastModifiedDate}`
           EOF
         '';
       }))
