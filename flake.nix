@@ -2,7 +2,7 @@
   inputs."master".url = "github:nixos/nixpkgs/master";
   inputs."nixpkgs-unstable".url = "github:nixos/nixpkgs/nixpkgs-unstable";
   inputs."nixos-unstable".url = "github:nixos/nixpkgs/nixos-unstable";
-  inputs."nixos-22.11".url = "github:nixos/nixpkgs/nixos-22.11";
+  inputs."nixos-24.05".url = "github:nixos/nixpkgs/nixos-24.05";
 
   outputs = { self, ... }@inputs: let
     inherit (inputs.nixpkgs-unstable.lib) genAttrs platforms;
@@ -18,13 +18,10 @@
         pname = "nix-index-db-src-${system}-${channel}";
         version = builtins.substring 2 6 flake.lastModifiedDate + "." + flake.shortRev;
         src = self;
-        nativeBuildInputs = [
-          pkgs.nix-index
-          pkgs.cacert
+        nativeBuildInputs = with pkgs; [
+          nix-index
+          cacert
         ];
-        dontUnpack = true;
-        dontPatch = true;
-        dontConfigure = true;
         buildPhase = ''
           mkdir -p $out/nix-index-db
           HOME=$TMP nix-index --db $out/nix-index-db --system ${system} \
