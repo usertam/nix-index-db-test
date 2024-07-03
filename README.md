@@ -1,5 +1,5 @@
 # nix-index-db
-### x86_64-linux/master @ 240701.3881b74
-- Nixpkgs: `master`@[`3881b74`](https://github.com/NixOS/nixpkgs/commit/3881b74fa87197d8a481d31ed7698c70dde5edd9)
+### x86_64-linux/master @ 240702.c57e7bf
+- Nixpkgs: `master`@[`c57e7bf`](https://github.com/NixOS/nixpkgs/commit/c57e7bfc167bdc4571a432a7292a0eff5a4d7c30)
 - Platform: `x86_64-linux`
-- Timestamp: `20240701014453`
+- Timestamp: `20240702012200`
