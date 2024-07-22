@@ -1,5 +1,5 @@
 # nix-index-db
-### aarch64-linux/nixpkgs-unstable @ 240719.ad01110
-- Nixpkgs: `nixpkgs-unstable`@[`ad01110`](https://github.com/NixOS/nixpkgs/commit/ad0111043c09f7d0f6b9f039882cbf350d4f7d49)
+### aarch64-linux/nixpkgs-unstable @ 240720.6e14bbc
+- Nixpkgs: `nixpkgs-unstable`@[`6e14bbc`](https://github.com/NixOS/nixpkgs/commit/6e14bbce7bea6c4efd7adfa88a40dac750d80100)
 - Platform: `aarch64-linux`
-- Timestamp: `20240719154008`
+- Timestamp: `20240720091100`
