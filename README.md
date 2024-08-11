@@ -1,5 +1,5 @@
 # nix-index-db
-### x86_64-darwin/master @ 240809.2cd969c
-- Nixpkgs: `master`@[`2cd969c`](https://github.com/NixOS/nixpkgs/commit/2cd969c1086dc66a1d6f206d28c3d901d94d9a6e)
+### x86_64-darwin/master @ 240810.e34c7a6
+- Nixpkgs: `master`@[`e34c7a6`](https://github.com/NixOS/nixpkgs/commit/e34c7a6b2a2b502a100c660368c17f2e07f73c61)
 - Platform: `x86_64-darwin`
-- Timestamp: `20240809001938`
+- Timestamp: `20240810013226`
