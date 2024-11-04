@@ -1,5 +1,5 @@
 # nix-index-db
-### aarch64-linux/master @ 241031.0f1754a
-- Nixpkgs: `master`@[`0f1754a`](https://github.com/NixOS/nixpkgs/commit/0f1754a74e079e8173fa794443088913a6f6102d)
+### aarch64-linux/master @ 241103.3ce0ea5
+- Nixpkgs: `master`@[`3ce0ea5`](https://github.com/NixOS/nixpkgs/commit/3ce0ea52a0a71ac04f4ce0a2c8a629e02a4e6279)
 - Platform: `aarch64-linux`
-- Timestamp: `20241031015616`
+- Timestamp: `20241103020052`
