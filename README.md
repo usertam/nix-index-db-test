@@ -1,5 +1,5 @@
 # nix-index-db
-### x86_64-darwin/nixpkgs-unstable @ 241105.8c4dc69
-- Nixpkgs: `nixpkgs-unstable`@[`8c4dc69`](https://github.com/NixOS/nixpkgs/commit/8c4dc69b9732f6bbe826b5fbb32184987520ff26)
+### x86_64-darwin/nixpkgs-unstable @ 241107.85f7e66
+- Nixpkgs: `nixpkgs-unstable`@[`85f7e66`](https://github.com/NixOS/nixpkgs/commit/85f7e662eda4fa3a995556527c87b2524b691933)
 - Platform: `x86_64-darwin`
-- Timestamp: `20241105182338`
+- Timestamp: `20241107055023`
