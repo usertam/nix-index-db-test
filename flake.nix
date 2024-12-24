@@ -18,6 +18,7 @@
         pname = "nix-index-db-src-${system}-${channel}";
         version = builtins.substring 2 6 flake.lastModifiedDate + "." + flake.shortRev;
         src = self;
+        __impure = true;
         nativeBuildInputs = with pkgs; [
           nix-index
           cacert
