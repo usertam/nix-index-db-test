@@ -49,6 +49,8 @@ jobs:
     steps:
     - uses: actions/checkout@main
     - uses: DeterminateSystems/nix-installer-action@main
+      with:
+        extra-conf: extra-experimental-features = impure-derivations
     - uses: DeterminateSystems/magic-nix-cache-action@main
     - name: Set up github-actions identity
       run: |
@@ -58,7 +60,7 @@ jobs:
       id: build
       continue-on-error: true
       run: |
-        nix build .#${{matrix.system}}.${{matrix.channel}} --extra-experimental-features impure-derivations
+        nix build .#${{matrix.system}}.${{matrix.channel}}
     - name: Push to ${{matrix.system}}/${{matrix.channel}}
       if: steps.build.outcome == 'success'
       run: |
