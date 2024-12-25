@@ -15,7 +15,7 @@
         lock = with builtins; fromJSON (readFile ./flake.lock);
         flake = inputs.${channel};
       in pkgs.stdenv.mkDerivation (final: {
-        pname = "nix-index-db-src-${system}-${channel}";
+        pname = "nix-index-db-build-${system}-${channel}";
         version = builtins.substring 2 6 flake.lastModifiedDate + "." + flake.shortRev;
         src = self;
         __impure = true;
