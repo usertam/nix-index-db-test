@@ -27,12 +27,7 @@ jobs:
         DELIM=''
         for CHANNEL in "master" "nixpkgs-unstable"; do
           for SYSTEM in "aarch64-darwin" "aarch64-linux" "i686-linux" "x86_64-darwin" "x86_64-linux"; do
-            if [ "${SYSTEM#*-}" == "darwin" ]; then
-              HOST="macos-latest"
-            else
-              HOST="ubuntu-latest"
-            fi
-            JSON+="${DELIM}{\"system\":\"${SYSTEM}\",\"channel\":\"${CHANNEL}\",\"host\":\"${HOST}\"}"
+            JSON+="${DELIM}{\"system\":\"${SYSTEM}\",\"channel\":\"${CHANNEL}\"}"
             DELIM=','
           done
         done
@@ -45,7 +40,7 @@ jobs:
     strategy:
       matrix: ${{fromJson(needs.update-deps.outputs.matrix)}}
       fail-fast: false
-    runs-on: ${{matrix.host}}
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@main
     - uses: DeterminateSystems/nix-installer-action@main
