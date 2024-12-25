@@ -2,7 +2,7 @@
   inputs."master".url = "github:nixos/nixpkgs/master";
   inputs."nixpkgs-unstable".url = "github:nixos/nixpkgs/nixpkgs-unstable";
   inputs."nixos-unstable".url = "github:nixos/nixpkgs/nixos-unstable";
-  inputs."nixos-24.05".url = "github:nixos/nixpkgs/nixos-24.05";
+  inputs."nixos-24.11".url = "github:nixos/nixpkgs/nixos-24.11";
 
   outputs = { self, ... }@inputs: let
     inherit (inputs.nixpkgs-unstable.lib) genAttrs platforms;
@@ -29,22 +29,6 @@
             --nixpkgs https://github.com/NixOS/nixpkgs/tarball/${flake.rev}
         '';
         installPhase = ''
-          cat <<'EOF' > $out/flake.nix
-          {
-            outputs.packages.${system}.default = self;
-          }
-          EOF
-
-          cat <<'EOF' > $out/flake.lock
-          {
-            "nodes": {
-              "root": {}
-            },
-            "root": "root",
-            "version": 7
-          }
-          EOF
-
           cat <<'EOF' > $out/README.md
           # nix-index-db
           ### ${system}/${channel} @ ${final.version}
