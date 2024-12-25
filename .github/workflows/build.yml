@@ -58,7 +58,7 @@ jobs:
       id: build
       continue-on-error: true
       run: |
-        nix build .#${{matrix.system}}.${{matrix.channel}}
+        nix build .#${{matrix.system}}.${{matrix.channel}} --extra-experimental-features impure-derivations
     - name: Push to ${{matrix.system}}/${{matrix.channel}}
       if: steps.build.outcome == 'success'
       run: |
