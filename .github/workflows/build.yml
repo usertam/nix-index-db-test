@@ -50,7 +50,7 @@ jobs:
     - uses: actions/checkout@main
     - uses: DeterminateSystems/nix-installer-action@main
       with:
-        extra-conf: extra-experimental-features = impure-derivations
+        extra-conf: experimental-features = nix-command flakes impure-derivations
     - uses: DeterminateSystems/magic-nix-cache-action@main
     - name: Set up github-actions identity
       run: |
@@ -69,5 +69,5 @@ jobs:
         cp -a result/* build
         cd build
         git add .
-        git commit -m "$(grep -o '@ [0-9a-z].*' README.md | cut -d\  -f2)" $([ -z "$ref" ] && echo --amend)
+        git commit -m "$(grep -o '@ [0-9a-z].*' README.md | cut -d\  -f2)" "$([ -z "$ref" ] && echo --amend)"
         git push origin HEAD:refs/heads/${{matrix.system}}/${{matrix.channel}}
